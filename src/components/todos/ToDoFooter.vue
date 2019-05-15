@@ -1,30 +1,30 @@
 <template>
   <div class="todo-footer d-flex justify-content-center">
     <div class="add-button d-flex justify-content-center">
-      <Button mode="primary" @click="isFormOpen = true" >
+      <AppButton mode="primary" @click="isFormOpen = true" >
         <span class="plus">+</span> new task
-      </Button>
+      </AppButton>
     </div>
 
-    <Modal :isOpen="isFormOpen" :footer="false" @close="isFormOpen = false">
+    <AppModal :isOpen="isFormOpen" :footer="false" @close="isFormOpen = false">
       <ToDoForm @add="add"/>
-    </Modal>
+    </AppModal>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
 
-import Modal from "../core/Modal";
-import Button from "../core/Button";
+import AppModal from "../core/AppModal";
+import AppButton from "../core/AppButton";
 import ToDoForm from "./ToDoForm";
 import todoStore from "../../store/todo";
 
 export default {
   components: {
     ToDoForm,
-    Button,
-    Modal,
+    AppButton,
+    AppModal,
   },
   store: todoStore,
   data() {

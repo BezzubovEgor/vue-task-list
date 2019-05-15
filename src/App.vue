@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Layout>
+    <TheLayout>
       <template #content>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
@@ -8,24 +8,24 @@
       </template>
 
       <template #footer>
-        <Footer :menu="mainMenu"/>
+        <TheFooter :menu="mainMenu"/>
       </template>
-    </Layout>
+    </TheLayout>
   </div>
 </template>
 
 <script>
-import Layout from "./components/core/layout/Layout";
-import Footer from "./components/core/layout/Footer";
+import TheLayout from "./components/core/layout/TheLayout";
+import TheFooter from "./components/core/layout/TheFooter";
 
 import router from "./router";
 import mainMenu from "./menus/main";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
-    Layout,
-    Footer
+    TheLayout,
+    TheFooter,
   },
   router,
   data() {

@@ -1,24 +1,23 @@
 <template>
-  <ListGroup>
+  <AppListGroup>
     <transition-group name="fade" appear>
-      <ListGroupItem v-for="todo in todos" :key="todo.id">
+      <AppListGroupItem v-for="todo in todos" :key="todo.id">
         <ToDoItem @toggle="$emit('toggle', todo.id)" v-bind="todo"/>
-      </ListGroupItem>
+      </AppListGroupItem>
     </transition-group>
-  </ListGroup>
+  </AppListGroup>
 </template>
 
 <script>
-import ListGroup from "../core/ListGroup";
-import ListGroupItem from "../core/ListGroupItem";
+import AppListGroup from "../core/AppListGroup";
+import AppListGroupItem from "../core/AppListGroupItem";
 import ToDoItem from "./ToDoItem";
 
 export default {
   name: "ToDoList",
-  mixins: [],
   components: {
-    ListGroup,
-    ListGroupItem,
+    AppListGroup,
+    AppListGroupItem,
     ToDoItem
   },
   props: {
@@ -26,7 +25,8 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  mixins: [],
 };
 </script>
 

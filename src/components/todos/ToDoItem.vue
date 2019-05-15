@@ -1,13 +1,13 @@
 <template>
-  <div class="todo-item" v-bind:class="todoClass" @click="$emit('toggle')"><Checkbox :value="done"/>{{ title }}</div>
+  <div class="todo-item" v-bind:class="todoClass" @click="$emit('toggle')"><AppCheckbox :value="done"/>{{ title }}</div>
 </template>
 
 <script>
-import Checkbox from "../core/Checkbox";
+import AppCheckbox from "../core/AppCheckbox";
 
 export default {
   name: "ToDoItem",
-  components: { Checkbox },
+  components: { AppCheckbox },
   props: {
     title: {
       type: String,

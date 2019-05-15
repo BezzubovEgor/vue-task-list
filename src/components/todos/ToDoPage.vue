@@ -16,11 +16,13 @@ import ToDoFooter from "./ToDoFooter";
 import todoStore from "../../store/todo";
 
 export default {
-  name: "ToDoApp",
+  name: "ToDoPage",
+
   components: {
     ToDoList,
     ToDoFooter
   },
+
   store: todoStore,
 
   computed: {

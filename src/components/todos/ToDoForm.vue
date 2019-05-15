@@ -18,21 +18,21 @@
       </div>
     </FadeUp>
     <div class="form-controls d-flex justify-content-between">
-      <Button @click="showDescription = true">
+      <AppButton @click="showDescription = true">
         <i class="fas fa-align-left"/>
-      </Button>
-      <Button type="submit">Save</Button>
+      </AppButton>
+      <AppButton type="submit">Save</AppButton>
     </div>
   </form>
 </template>
 
 <script>
 import FadeUp from "../core/animations/FadeUp";
-import Button from "../core/Button";
+import AppButton from "../core/AppButton";
 
 export default {
   name: "ToDoForm",
-  components: { FadeUp, Button },
+  components: { FadeUp, AppButton },
   props: {
     todo: Object
   },
