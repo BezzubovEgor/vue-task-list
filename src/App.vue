@@ -1,28 +1,58 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Layout>
+      <template #content>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </template>
+
+      <template #footer>
+        <Footer :menu="mainMenu"/>
+      </template>
+    </Layout>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Layout from "./components/core/layout/Layout";
+import Footer from "./components/core/layout/Footer";
+
+import router from "./router";
+import mainMenu from "./menus/main";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Layout,
+    Footer
+  },
+  router,
+  data() {
+    return {
+      mainMenu
+    };
   }
-}
+};
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
