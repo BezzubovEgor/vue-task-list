@@ -18,6 +18,7 @@
 import TheLayout from "./components/core/layout/TheLayout";
 import TheFooter from "./components/core/layout/TheFooter";
 
+import store from "./store";
 import router from "./router";
 import mainMenu from "./menus/main";
 
@@ -27,6 +28,7 @@ export default {
     TheLayout,
     TheFooter,
   },
+  store,
   router,
   data() {
     return {

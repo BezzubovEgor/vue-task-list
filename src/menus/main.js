@@ -1,11 +1,13 @@
+import routes from '../router/routes';
+
 const menu = [{
-    title: 'lists',
+    title: 'Project list',
     icon: 'fas fa-list',
-    to: '/',
+    to: routes.MAIN.path,
 }, {
-    title: 'about',
+    title: 'About this app',
     icon: 'fas fa-question-circle',
-    to: '/about',
+    to: routes.ABOUT.path,
 }]
 
 export default menu;

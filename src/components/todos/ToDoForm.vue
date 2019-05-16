@@ -4,8 +4,9 @@
       <input
         class="form-control todo-form-input"
         placeholder="What are you want to do?"
-        v-model="title"
         required
+        v-model="title"
+        v-focus
       >
     </div>
     <FadeUp>
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import focus from "../../directives/focus";
 import FadeUp from "../core/animations/FadeUp";
 import AppButton from "../core/AppButton";
 
@@ -44,9 +46,7 @@ export default {
     };
   },
   directives: {
-    focus: {
-      inserted: el => el.focus()
-    }
+    focus,
   },
   methods: {
     submit() {
@@ -61,8 +61,6 @@ export default {
 </script>
 
 <style scoped>
-.todo-form {
-}
 .todo-form-input {
   border: none;
   font-size: 0.9rem;

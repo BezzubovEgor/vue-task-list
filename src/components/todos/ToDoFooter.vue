@@ -1,7 +1,7 @@
 <template>
   <div class="todo-footer d-flex justify-content-center">
     <div class="add-button d-flex justify-content-center">
-      <AppButton mode="primary" @click="isFormOpen = true" >
+      <AppButton mode="primary" @click="isFormOpen = true">
         <span class="plus">+</span> new task
       </AppButton>
     </div>
@@ -18,24 +18,21 @@ import { mapActions } from "vuex";
 import AppModal from "../core/AppModal";
 import AppButton from "../core/AppButton";
 import ToDoForm from "./ToDoForm";
-import todoStore from "../../store/todo";
+import { ADD_TODO } from "../../store/actionTypes";
 
 export default {
   components: {
     ToDoForm,
     AppButton,
-    AppModal,
+    AppModal
   },
-  store: todoStore,
   data() {
     return {
       isFormOpen: false,
-      isMenuOpen: false,
-      menu: [{ title: 'Some menu item' }]
     };
   },
   methods: {
-    ...mapActions(["addToDo"]),
+    ...mapActions([ADD_TODO]),
     add(todo) {
       this.$data.isFormOpen = false;
       this.addToDo(todo);

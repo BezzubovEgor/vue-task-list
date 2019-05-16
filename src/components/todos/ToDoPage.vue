@@ -1,43 +1,50 @@
 <template>
-  <div class="row d-flex flex-column justify-content-between align-items-center todo-app">
-    <div class="col-sm-10 col-md-7 col-lg-5 text-left">
-      <h1 class="display-4 mt-3">{{ list }}</h1>
-      <ToDoList class="mt-3" :todos="todos" @toggle="toggleToDo"/>
-    </div>
-    <ToDoFooter/>
-  </div>
+  <AppPage>
+    <template #header>{{ project.name }}</template>
+    <ToDoList class="mt-3" :todos="project.todos" @toggle="toggleToDo"/>
+    <template #footer>
+      <ToDoFooter/>
+    </template>
+  </AppPage>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
+import AppPage from "../core/layout/AppPage";
 import ToDoList from "./ToDoList";
 import ToDoFooter from "./ToDoFooter";
-import todoStore from "../../store/todo";
+import routes from "../../router/routes";
+import { TOGGLE_TODO } from "../../store/actionTypes";
+import { SELECT_PROJECT } from "../../store/mutationTypes";
 
 export default {
   name: "ToDoPage",
-
   components: {
+    AppPage,
     ToDoList,
     ToDoFooter
   },
-
-  store: todoStore,
-
-  computed: {
-    ...mapState({
-      todos(state) {
-        return state[this.$route.params.list];
-      }
-    }),
-    list() {
-      return this.$route.params.list;
-    }
+  props: {
+    projectId: String,
   },
-
+  created() {
+    this.selectProject();
+  },
+  watch: {
+    projectId: "selectProject"
+  },
+  computed: {
+    ...mapGetters(["project"]),
+  },
   methods: {
-    ...mapActions(["addToDo", "toggleToDo"])
+    ...mapActions([TOGGLE_TODO]),
+    selectProject() {
+      this.$store.commit(SELECT_PROJECT, this.projectId);
+      if (!this.project) {
+        this.$router.replace(routes.NOT_FOUND.path);
+      }
+    }
   }
 };
 </script>
