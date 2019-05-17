@@ -2,7 +2,7 @@
   <div class="todo-footer d-flex justify-content-center">
     <div class="add-button d-flex justify-content-center">
       <AppButton mode="primary" @click="isFormOpen = true">
-        <span class="plus">+</span> new task
+        <span class="plus pr-3">+</span> New task
       </AppButton>
     </div>
 
@@ -18,7 +18,7 @@ import { mapActions } from "vuex";
 import AppModal from "../core/AppModal";
 import AppButton from "../core/AppButton";
 import ToDoForm from "./ToDoForm";
-import { ADD_TODO } from "../../store/actionTypes";
+import { ADD_TODO } from "../../store/mutationTypes";
 
 export default {
   components: {
@@ -48,13 +48,12 @@ export default {
   height: 1rem;
 }
 .plus {
-  padding-right: 0.5rem;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   line-height: 1rem;
 }
 .add-button {
   position: absolute;
-  transform: translateY(-10%);
+  transform: translateY(-20%);
   width: 100%;
 }
 .additional-controls {

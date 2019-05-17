@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT } from "./mutationTypes";
+import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT, REMOVE_PROJECT, ADD_PROJECT } from "./mutationTypes";
 
 export default {
     [ADD_TODO](state, todo) {
@@ -17,5 +17,13 @@ export default {
 
     [SELECT_PROJECT](state, project) {
         state.selectedProject = project;
+    },
+
+    [REMOVE_PROJECT](state, project) {
+        state.projects = state.projects.filter(item => item !== project);
+    },
+
+    [ADD_PROJECT](state, project) {
+        state.projects.push({ ...project, todos: [] });
     }
 };

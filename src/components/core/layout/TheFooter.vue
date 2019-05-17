@@ -39,11 +39,12 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   font-size: 0.7rem;
-  box-shadow: 0 -3px 3px rgba(30, 30, 30, 0.1);
+  background: white;
+  border-top: 1px solid #e9ecef;
 }
 .fa-bars {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 </style>

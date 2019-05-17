@@ -32,7 +32,7 @@ export default {
 
 .todo-item {
   cursor: pointer;
-  font-size: .8rem;
+  font-size: .9rem;
   font-weight: 500;
   color: rgba(0,0,0,.72);
 }

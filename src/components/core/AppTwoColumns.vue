@@ -1,9 +1,9 @@
 <template>
   <AppRow>
-    <div class="col-6">
+    <div class="col-6 pl-2">
       <slot name="left"/>
     </div>
-    <div class="col-6">
+    <div class="col-6 pr-2">
       <slot name="right"/>
     </div>
   </AppRow>

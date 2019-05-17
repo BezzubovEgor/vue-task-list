@@ -38,6 +38,17 @@ export default {
       default: "col-12 col-sm-9 col-md-7 col-lg-5",
       type: String
     }
+  },
+  created() {
+    document.addEventListener("backbutton", this.closeEventHandler);
+  },
+  destroyed() {
+    document.removeEventListener("backbutton", this.closeEventHandler);
+  },
+  methods: {
+    closeEventHandler() {
+      this.$emit("close");
+    }
   }
 };
 </script>
@@ -63,8 +74,7 @@ export default {
   box-shadow: 0 -3px 3px rgba(30, 30, 30, 0.1);
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
-  padding: 1rem;
-  padding-bottom: 2rem;
+  padding: 1.5rem;
 }
 .app-modal-footer {
   padding: 0.3rem 1rem;

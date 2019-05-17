@@ -12,14 +12,15 @@
     <FadeUp>
       <div class="form-group description" v-show="showDescription">
         <textarea
+          ref="description"
           class="form-control todo-form-input"
           placeholder="Describe your task"
           v-model="description"
         ></textarea>
       </div>
     </FadeUp>
-    <div class="form-controls d-flex justify-content-between">
-      <AppButton @click="showDescription = true">
+    <div class="form-controls d-flex justify-content-between mt-2">
+      <AppButton @click="openDescription">
         <i class="fas fa-align-left"/>
       </AppButton>
       <AppButton type="submit">Save</AppButton>
@@ -55,6 +56,10 @@ export default {
       }
       this.$emit("add", { title: this.title });
       this.title = "";
+    },
+    openDescription() {
+      this.showDescription = true;
+      this.$nextTick(() => this.$refs.description.focus());
     }
   }
 };

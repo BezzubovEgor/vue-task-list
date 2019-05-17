@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 .card {
-  margin: 0.4rem 0.2rem;
+  margin: 0.6rem 0.3rem;
   border-radius: 0.5rem;
   border-color: #dadce0;
   outline: none;

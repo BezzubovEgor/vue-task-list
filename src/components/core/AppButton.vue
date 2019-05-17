@@ -51,11 +51,11 @@ button {
 }
 .primary {
   border-radius: 2rem;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1.3rem;
   font-weight: 500;
   font-size: 0.9rem;
 }
 .secondary {
-    color: rgba(0,0,0,.65);
+    color: rgba(0,0,0,.50);
 }
 </style>
