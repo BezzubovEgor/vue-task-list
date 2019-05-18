@@ -5,7 +5,7 @@
         class="form-control project-form-input"
         placeholder="What project are you want to create?"
         required
-        v-model="title"
+        v-model="name"
         v-focus
       >
     </div>
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      title: "",
+      name: "",
     };
   },
   directives: {
@@ -34,11 +34,11 @@ export default {
   },
   methods: {
     submit() {
-      if (!this.title) {
+      if (!this.name) {
         return;
       }
-      this.$emit("add", { title: this.title });
-      this.title = "";
+      this.$emit("add", { name: this.name });
+      this.name = "";
     },
   }
 };

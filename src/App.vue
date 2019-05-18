@@ -50,7 +50,8 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.2s;
+  transition: all .3s;
+  overflow: hidden;
 }
 
 .fade-enter,

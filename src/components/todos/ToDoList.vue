@@ -34,12 +34,12 @@ export default {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s;
+  transition: all .3s;
   bottom: 0;
 }
 .fade-enter,
 .fade-leave-to {
-  bottom: -50px;
+  transform: translateY(-50px);
   opacity: 0;
 }
 </style>

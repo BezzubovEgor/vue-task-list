@@ -7,7 +7,7 @@ export default {
             done: false,
             id: new Date().getTime(),
         };
-        state.projects.find(({ id }) => id === state.selectedProject).todos.push(newToDo);
+        state.projects.find(({ id }) => id === state.selectedProject).todos.unshift(newToDo);
     },
 
     [TOGGLE_TODO](state, todoId) {
@@ -24,6 +24,6 @@ export default {
     },
 
     [ADD_PROJECT](state, project) {
-        state.projects.push({ ...project, todos: [] });
+        state.projects.push({ ...project, todos: [], id: new Date().getTime() });
     }
 };

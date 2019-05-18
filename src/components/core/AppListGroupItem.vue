@@ -1,5 +1,5 @@
 <template>
-  <div class="list-group-item" :class="className">
+  <div class="list-group-item p-3" :class="className">
     <slot/>
   </div>
 </template>
@@ -23,6 +23,9 @@ export default {
 }
 .list-group-item:first-child {
   border-top: none;
+}
+.list-group-item:last-child {
+  border-bottom: 1px solid #e9ecef;
 }
 .list-group-item:hover {
   background: transparent;

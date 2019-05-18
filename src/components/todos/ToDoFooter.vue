@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      isFormOpen: false,
+      isFormOpen: false
     };
   },
   methods: {
@@ -44,8 +44,8 @@ export default {
 <style scoped>
 .todo-footer {
   width: 100%;
-  position: relative;
-  height: 1rem;
+  position: fixed;
+  z-index: 10000;
 }
 .plus {
   font-size: 1.9rem;
@@ -53,7 +53,7 @@ export default {
 }
 .add-button {
   position: absolute;
-  transform: translateY(-20%);
+  transform: translateY(-50%);
   width: 100%;
 }
 .additional-controls {

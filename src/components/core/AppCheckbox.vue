@@ -21,7 +21,7 @@ export default {
   width: 1.3rem;
   display: inline-block;
   border-radius: 1.5rem;
-  border: 1px solid #dadce0;
+  border: 2px solid #bbbec4;
   text-align: center;
   margin-right: 1rem;
   color: white;

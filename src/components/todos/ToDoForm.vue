@@ -47,14 +47,14 @@ export default {
     };
   },
   directives: {
-    focus,
+    focus
   },
   methods: {
     submit() {
       if (!this.title) {
         return;
       }
-      this.$emit("add", { title: this.title });
+      this.$emit("add", { title: this.title, description: this.description });
       this.title = "";
     },
     openDescription() {
@@ -80,10 +80,10 @@ export default {
   font-size: 0.8rem;
   overflow: hidden;
   resize: none;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.55);
 }
 .description .todo-form-input::placeholder {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.45);
 }
 </style>
 
