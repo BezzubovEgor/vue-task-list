@@ -1,7 +1,11 @@
 <template>
-  <div class="page row d-flex flex-column justify-content-between align-items-streatch flex-nowrap">
-    <div class="actions p-2">
-      <slot name="actions"/>
+  <div class="page row d-flex flex-column justify-content-between align-items-center flex-nowrap">
+    <div class="actions">
+      <div class="row m-0 justify-content-center">
+        <div class="p-2 col-sm-10 col-md-7 col-lg-5">
+          <slot name="actions"/>
+        </div>
+      </div>
     </div>
     <div class="content pb-4 flex-grow-1 col-sm-10 col-md-7 col-lg-5 text-left">
       <h1 class="mt-3 ml-3">
@@ -28,7 +32,6 @@ export default {
   height: 100%;
   width: 100%;
   position: absolute;
-  overflow: scroll;
 }
 .content {
   overflow: auto;
@@ -40,9 +43,11 @@ h1 {
 .actions {
   background: white;
   z-index: 10000;
+  width: 100%;
 }
 .footer {
   position: relative;
   background: white;
+  width: 100%;
 }
 </style>
