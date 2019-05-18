@@ -1,5 +1,5 @@
 <template>
-    <h1 class="display-1">Created by Bezzubov Egor</h1>
+    <h1 class="display-4">Created by Bezzubov Egor</h1>
 </template>
 
 <script>

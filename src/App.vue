@@ -34,6 +34,9 @@ export default {
     return {
       mainMenu
     };
+  },
+  created() {
+    this.$store.dispatch("loadProjects");
   }
 };
 </script>
