@@ -5,7 +5,7 @@ export default {
         const newToDo = {
             ...todo,
             done: false,
-            id: new Date().getTime(),
+            id: new Date().getTime().toString(),
         };
         state.projects.find(({ id }) => id === state.selectedProject).todos.unshift(newToDo);
     },
@@ -28,7 +28,7 @@ export default {
     },
 
     [ADD_PROJECT](state, project) {
-        state.projects.push({ ...project, todos: [], id: new Date().getTime() });
+        state.projects.push({ ...project, todos: [], id: new Date().getTime().toString() });
     }
 
 
