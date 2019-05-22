@@ -1,5 +1,9 @@
 # vue-todo
 
+## Demo
+
+https://bezzubovegor.github.io/vue-task-list/
+
 ## Project setup
 ```
 npm install
