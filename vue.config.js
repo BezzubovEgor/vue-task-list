@@ -1,0 +1,5 @@
+const prod = process.env.NODE_ENV === "production";
+
+module.exports = {
+    publicPath: prod ? '/vue-task-list/' : '/',
+}

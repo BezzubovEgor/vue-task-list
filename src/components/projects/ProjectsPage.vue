@@ -1,6 +1,6 @@
 <template>
   <AppPage>
-    <template #header>Projects</template>
+    <template #header>Your projects</template>
     <ProjectList/>
     <template #footer>
       <ProjectFooter/>
