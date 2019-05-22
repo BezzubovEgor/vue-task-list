@@ -1,7 +1,8 @@
 <template>
-  <AppBackground :show="!projects.length" :src="require('../../assets/projects.svg')">
-    <transition-group name="fade" appear>
+  <AppBackground :src="require('../../assets/projects.svg')">
+    <transition-group name="fade" appear class="row">
       <ProjectListItem
+        class="col-6 p-0"
         v-for="project in projects"
         v-bind="project"
         @select="select(project.id)"
@@ -40,9 +41,12 @@ export default {
   transition: all 0.3s;
   bottom: 0;
 }
+.fade-move {
+  transition: transform .3s;
+}
 .fade-enter,
 .fade-leave-to {
-  bottom: -50px;
+  bottom: 50px;
   opacity: 0;
 }
 </style>

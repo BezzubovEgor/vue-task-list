@@ -1,8 +1,5 @@
 <template>
-  <button
-    :class="classByMode"
-    @click="$emit('click', $event)"
-    v-bind="$props">
+  <button :class="classByMode" @click="$emit('click', $event)" v-bind="$props">
     <slot/>
   </button>
 </template>
@@ -39,7 +36,7 @@ button {
   cursor: pointer;
 }
 .default {
-  color: #007bff;
+  color: #625bdb;
   background: transparent;
   border: none;
   font-size: 0.9rem;
@@ -54,8 +51,19 @@ button {
   padding: 0.8rem 1.3rem;
   font-weight: 500;
   font-size: 0.9rem;
+  background: #514bc0;
+  border-color: #514bc0;
+}
+.primary:hover,
+.primary:active,
+.primary:focus {
+  background: #4d48a2 !important;
+  border-color: #4d48a2 !important;
+}
+.primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(77,72,162,.5) !important;
 }
 .secondary {
-    color: rgba(0,0,0,.50);
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>

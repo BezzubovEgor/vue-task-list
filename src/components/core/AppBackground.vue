@@ -13,12 +13,16 @@
 
 <script>
 import FadeInOut from "./animations/FadeInOut";
+
 export default {
   components: {
     FadeInOut
   },
   props: {
-    show: Boolean,
+    show: {
+      type: Boolean,
+      default: true,
+    },
     src: [Object, String]
   }
 };

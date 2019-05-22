@@ -1,6 +1,6 @@
 <template>
   <div class="page row d-flex flex-column justify-content-between align-items-center flex-nowrap">
-    <div class="actions">
+    <div class="actions" v-show="$slots.actions">
       <div class="row m-0 justify-content-center">
         <div class="p-2 col-sm-10 col-md-7 col-lg-5">
           <slot name="actions"/>
@@ -15,7 +15,7 @@
         <slot/>
       </div>
     </div>
-    <div class="footer">
+    <div class="footer" v-show="$slots.footer">
       <slot name="footer"/>
     </div>
   </div>
@@ -34,7 +34,13 @@ export default {
   position: absolute;
 }
 .content {
-  overflow: auto;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+.content::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 h1 {
   font-size: 1.7rem;

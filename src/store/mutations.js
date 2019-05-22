@@ -1,6 +1,10 @@
-import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS } from "./mutationTypes";
+import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED } from "./mutationTypes";
 
 export default {
+    [STORE_LOADED](state) {
+        state.storeLoaded = true;
+    },
+
     [ADD_TODO](state, todo) {
         const newToDo = {
             ...todo,
@@ -28,7 +32,7 @@ export default {
     },
 
     [ADD_PROJECT](state, project) {
-        state.projects.push({ ...project, todos: [], id: new Date().getTime().toString() });
+        state.projects.unshift({ ...project, todos: [], id: new Date().getTime().toString() });
     }
 
 

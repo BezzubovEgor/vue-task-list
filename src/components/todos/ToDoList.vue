@@ -1,5 +1,5 @@
 <template>
-  <AppBackground :show="!todos.length" :src="require('../../assets/todo.svg')">
+  <AppBackground :src="require('../../assets/todo.svg')">
     <AppListGroup v-if="todos.length">
       <transition-group name="fade" appear>
         <AppListGroupItem v-for="todo in todos" :key="todo.id">
@@ -36,6 +36,9 @@ export default {
 
 
 <style scoped>
+.fade-move {
+  transition: transform 0.3s;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.3s;

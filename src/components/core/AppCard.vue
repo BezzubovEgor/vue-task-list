@@ -28,11 +28,11 @@ export default {
 
 <style scoped>
 .card {
-  margin: 0.6rem 0.3rem;
   border-radius: 0.5rem;
   border-color: #dadce0;
   outline: none;
   transition: all .3s;
+  background: rgba(255, 255, 255, .7);
 }
 .card-body {
     font-size: .9rem;

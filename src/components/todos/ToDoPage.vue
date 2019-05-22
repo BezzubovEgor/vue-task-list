@@ -41,7 +41,7 @@ export default {
     ToDoFooter
   },
   props: {
-    projectId: [String, Number],
+    projectId: String
   },
   created() {
     this.selectProject();

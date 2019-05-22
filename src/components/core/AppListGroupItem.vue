@@ -20,6 +20,7 @@ export default {
 .list-group-item {
   border: none;
   border-top: 1px solid #e9ecef;
+  background: rgba(255, 255, 255, .7);
 }
 .list-group-item:first-child {
   border-top: none;
@@ -28,6 +29,6 @@ export default {
   border-bottom: 1px solid #e9ecef;
 }
 .list-group-item:hover {
-  background: transparent;
+  background: rgba(255, 255, 255, .7);
 }
 </style>

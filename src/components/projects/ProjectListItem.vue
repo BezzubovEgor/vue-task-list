@@ -1,15 +1,17 @@
 <template>
-  <AppCard interactive @select="$emit('select')">
-    <template #header>{{ name }}</template>
-    <div>
-      To Do:
-      <span class="badge">{{ todo }}</span>
-    </div>
-    <div>
-      Done:
-      <span class="badge">{{ done }}</span>
-    </div>
-  </AppCard>
+  <div>
+    <AppCard interactive @select="$emit('select')" class="m-1">
+      <template #header>{{ name }}</template>
+      <div>
+        To Do:
+        <span class="badge">{{ todo }}</span>
+      </div>
+      <div>
+        Done:
+        <span class="badge">{{ done }}</span>
+      </div>
+    </AppCard>
+  </div>
 </template>
 
 <script>
@@ -20,10 +22,10 @@ export default {
     AppCard
   },
   props: {
-      name: String,
-      todo: Number,
-      done: Number,
-  },
+    name: String,
+    todo: Number,
+    done: Number
+  }
 };
 </script>
 

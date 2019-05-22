@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TheLayout>
+    <TheLayout v-if="storeLoaded">
       <template #content>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
@@ -21,6 +21,7 @@ import TheFooter from "./components/core/layout/TheFooter";
 import store from "./store";
 import router from "./router";
 import mainMenu from "./menus/main";
+import { mapState } from 'vuex';
 
 export default {
   name: "App",
@@ -37,7 +38,8 @@ export default {
   },
   created() {
     this.$store.dispatch("loadProjects");
-  }
+  },
+  computed: mapState(['storeLoaded']),
 };
 </script>
 

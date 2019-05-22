@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS } from "./mutationTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED } from "./mutationTypes";
 import { saveToStore, loadStore } from "../api/indexedDBService";
 
 export default {
@@ -25,6 +25,7 @@ export default {
     async loadProjects(context) {
         const projects = await loadStore('projects');
         context.commit(SET_PROJECTS, projects || []);
+        context.commit(STORE_LOADED);
     },
 
     async saveProjects(context) {
