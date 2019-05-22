@@ -1,5 +1,24 @@
-const prod = process.env.NODE_ENV === "production";
-
 module.exports = {
-    publicPath: prod ? '/vue-task-list/' : '/',
+    publicPath: process.env.VUE_APP_BASE_URL || '/',
+    pwa: {
+        themeColor: '#FFF',
+        msTileColor: '#FFF',
+        name: 'Vue todo',
+        workboxOptions: {
+            runtimeCaching: [
+                {
+                    urlPattern: new RegExp('^https://fonts.(?:googleapis|gstatic).com/(.*)'),
+                    handler: 'cacheFirst'
+                },
+                {
+                    urlPattern: new RegExp('https://stackpath.bootstrapcdn.com/bootstrap/(.*)'),
+                    handler: 'cacheFirst'
+                },
+                {
+                    urlPattern: new RegExp('https://use.fontawesome.com/(.*)'),
+                    handler: 'cacheFirst'
+                },
+            ]
+        }
+    }
 }
