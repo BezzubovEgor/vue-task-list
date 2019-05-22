@@ -5,6 +5,8 @@ module.exports = {
         msTileColor: '#FFF',
         name: 'Vue todo',
         workboxOptions: {
+            skipWaiting: true,
+            clientsClaim: true,
             runtimeCaching: [
                 {
                     urlPattern: new RegExp('^https://fonts.(?:googleapis|gstatic).com/(.*)'),
