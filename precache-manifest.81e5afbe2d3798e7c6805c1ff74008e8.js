@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/vue-task-list/img/todo.75cfc88e.svg"
   },
   {
-    "revision": "1913d200f80f0a89cb7ecee29fe138f2",
+    "revision": "7ed321ce1fabdcafeedc404760fac51b",
     "url": "/vue-task-list/index.html"
   },
   {
