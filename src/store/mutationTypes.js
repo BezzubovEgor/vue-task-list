@@ -1,6 +1,7 @@
 export const ADD_TODO = "addToDo";
 export const TOGGLE_TODO = "toggleToDo";
 export const REMOVE_TODO = "removeToDo";
+export const MOVE_TODO = "moveToDo";
 export const SELECT_TODO = "selectToDo";
 export const SET_PROJECTS = "setProjects";
 export const SELECT_PROJECT = "selectProject";

@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED } from "./mutationTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED, MOVE_TODO } from "./mutationTypes";
 import { saveToStore, loadStore } from "../api/indexedDBService";
 
 export default {
@@ -14,6 +14,11 @@ export default {
 
     [REMOVE_TODO](context, todoId) {
         context.commit(REMOVE_TODO, todoId);
+        context.dispatch('saveProjects');
+    },
+
+    [MOVE_TODO](context, data) {
+        context.commit(MOVE_TODO, data);
         context.dispatch('saveProjects');
     },
 

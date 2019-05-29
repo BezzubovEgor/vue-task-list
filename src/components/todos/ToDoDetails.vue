@@ -1,10 +1,15 @@
 <template>
   <AppPage v-if="todo">
     <template #actions>
-      <AppDetailsActions @back="$router.back()" @remove="removeCurrent"/>
+      <AppDetailsActions @back="$router.back()" @remove="remove"/>
     </template>
-    <!-- <AppSelector /> -->
-    <ToDoDetailsForm :todo="todo"/>
+    <AppSelector
+        :value="this.projectId"
+        :options="this.projects"
+        :valueKey="'id'"
+        :labelKey="'name'"
+        @change="move"/>
+    <ToDoDetailsForm :todo="todo" />
   </AppPage>
 </template>
 
@@ -15,7 +20,7 @@ import AppPage from "../core/layout/AppPage";
 import AppDetailsActions from "../core/layout/AppDetailsActions";
 import AppSelector from "../core/AppSelector";
 import ToDoDetailsForm from "./ToDoDetailsForm";
-import { SELECT_PROJECT, SELECT_TODO, REMOVE_TODO } from "../../store/mutationTypes";
+import { SELECT_PROJECT, SELECT_TODO, REMOVE_TODO, MOVE_TODO } from "../../store/mutationTypes";
 import routes from "../../router/routes";
 
 export default {
@@ -31,18 +36,18 @@ export default {
     todoId: String
   },
   created() {
-    this.selectToDo();
+    this.select();
   },
   watch: {
-    todoId: "selectToDo",
-    projectId: "selectToDo"
+    todoId: "select",
+    projectId: "select"
   },
   computed: {
-    ...mapGetters(["todo", "project"])
+    ...mapGetters(["todo", "project", "projects"])
   },
   methods: {
-    ...mapActions([REMOVE_TODO]),
-    selectToDo() {
+    ...mapActions([REMOVE_TODO, MOVE_TODO]),
+    select() {
       this.$store.commit(SELECT_PROJECT, this.projectId);
       this.$store.commit(SELECT_TODO, this.todoId);
 
@@ -50,9 +55,20 @@ export default {
         this.$router.replace(routes.NOT_FOUND.path);
       }
     },
-    removeCurrent() {
+    remove() {
       this.$router.back();
       this[REMOVE_TODO](this.todoId);
+    },
+    move(projectId) {
+        this[MOVE_TODO]({
+            to: projectId,
+            from: this.projectId,
+            todoId: this.todoId
+        });
+        this.$router.replace({
+            name: routes.TODO_DETAILS.name,
+            params: { projectId, todoId: this.todoId },
+        });
     }
   }
 };

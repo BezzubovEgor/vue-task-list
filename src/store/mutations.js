@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED, SELECT_TODO, REMOVE_TODO } from "./mutationTypes";
+import { ADD_TODO, TOGGLE_TODO, SELECT_PROJECT, REMOVE_PROJECT, ADD_PROJECT, SET_PROJECTS, STORE_LOADED, SELECT_TODO, REMOVE_TODO, MOVE_TODO } from "./mutationTypes";
 
 export default {
     [STORE_LOADED](state) {
@@ -22,6 +22,16 @@ export default {
     [REMOVE_TODO](state, todoId) {
         const project = state.projects.find(({ id }) => id === state.selectedProject);
         project.todos = project.todos.filter(({ id }) => id !== todoId);
+    },
+
+    [MOVE_TODO](state, { from, to, todoId }) {
+        const projectFrom = state.projects.find(({ id }) => id === from);
+        const projectTo = state.projects.find(({ id }) => id === to);
+
+        const todo = projectFrom.todos.find(({ id }) => id === todoId);
+
+        projectFrom.todos = projectFrom.todos.filter(({ id }) => id !== todoId);
+        projectTo.todos.push(todo);
     },
 
     [SET_PROJECTS](state, projects) {
