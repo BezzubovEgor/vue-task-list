@@ -1,17 +1,10 @@
 <template>
   <AppPage v-if="project">
     <template #actions>
-      <div class="d-flex justify-content-between actions px-2 pt-3 pb-1">
-        <AppButton mode="default-secondary" @click="back">
-          <i class="fas fa-chevron-left"/>
-        </AppButton>
-        <AppButton mode="default-secondary" @click="removeSelectedProject">
-          <i class="far fa-trash-alt"/>
-        </AppButton>
-      </div>
+      <AppDetailsActions @back="$router.back()" @remove="removeSelectedProject" />
     </template>
     <template #header>{{ project.name }}</template>
-    <ToDoList class="mt-3 todo-list" :todos="project.todos" @toggle="toggleToDo"/>
+    <ToDoList class="mt-3 todo-list" :todos="project.todos" @toggle="toggleToDo" @open="openToDo"/>
     <template #footer>
       <ToDoFooter/>
     </template>
@@ -22,7 +15,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 import AppPage from "../core/layout/AppPage";
-import AppButton from "../core/AppButton";
+import AppDetailsActions from "../core/layout/AppDetailsActions";
 import ToDoList from "./ToDoList";
 import ToDoFooter from "./ToDoFooter";
 import routes from "../../router/routes";
@@ -36,7 +29,7 @@ export default {
   name: "ToDoPage",
   components: {
     AppPage,
-    AppButton,
+    AppDetailsActions,
     ToDoList,
     ToDoFooter
   },
@@ -60,13 +53,13 @@ export default {
         this.$router.replace(routes.NOT_FOUND.path);
       }
     },
-    back() {
-      this.$router.back();
-    },
     removeSelectedProject() {
-      this.back();
-      this[REMOVE_PROJECT](this.project);
-    }
+      this.$router.back();
+      this[REMOVE_PROJECT](this.projectId);
+    },
+    openToDo(todoId) {
+      this.$router.push({ name: routes.TODO_DETAILS.name, params: { projectId: this.projectId, todoId } });
+    },
   }
 };
 </script>
@@ -76,9 +69,6 @@ export default {
   height: 100%;
   width: 100%;
   position: absolute;
-}
-.actions i {
-  font-size: 1.1rem;
 }
 .todo-list {
   margin-right: -15px;

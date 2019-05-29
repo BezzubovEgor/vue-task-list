@@ -1,6 +1,6 @@
 <template>
-  <div class="todo-item d-flex" v-bind:class="todoClass" @click="$emit('toggle')">
-    <AppCheckbox :value="done"/>
+  <div class="todo-item d-flex" v-bind:class="todoClass" @click="$emit('click')">
+    <AppCheckbox :value="done" @click="$emit('toggle')" @click.native.stop/>
     <div class="text-wrapper">
       <div class="title">{{ title }}</div>
       <div class="desc mt-1" v-show="description">
@@ -14,7 +14,7 @@
 import AppCheckbox from "../core/AppCheckbox";
 
 export default {
-  name: "ToDoItem",
+  name: "ToDoListItem",
   components: { AppCheckbox },
   props: {
     title: {

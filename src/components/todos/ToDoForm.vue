@@ -1,22 +1,19 @@
 <template>
   <form class="todo-form" @submit.prevent="submit">
     <div class="form-group mb-0">
-      <input
-        class="form-control todo-form-input"
+      <AppInput
         placeholder="What are you want to do?"
         required
-        v-model="title"
-        v-focus
-      >
+        focus
+        v-model="title" />
     </div>
     <FadeUp>
       <div class="form-group description" v-show="showDescription">
-        <textarea
+        <AppTextarea
+          :maxHeight="250"
           ref="description"
-          class="form-control todo-form-input"
           placeholder="Describe your task"
-          v-model="description"
-        ></textarea>
+          v-model="description" />
       </div>
     </FadeUp>
     <div class="form-controls d-flex justify-content-between mt-2">
@@ -29,13 +26,14 @@
 </template>
 
 <script>
-import focus from "../../directives/focus";
 import FadeUp from "../core/animations/FadeUp";
 import AppButton from "../core/AppButton";
+import AppInput from "../core/AppInput";
+import AppTextarea from "../core/AppTextarea";
 
 export default {
   name: "ToDoForm",
-  components: { FadeUp, AppButton },
+  components: { FadeUp, AppButton, AppInput, AppTextarea },
   props: {
     todo: Object
   },
@@ -45,9 +43,6 @@ export default {
       description: "",
       showDescription: false
     };
-  },
-  directives: {
-    focus
   },
   methods: {
     submit() {
@@ -59,32 +54,13 @@ export default {
     },
     openDescription() {
       this.showDescription = true;
-      this.$nextTick(() => this.$refs.description.focus());
+      this.$nextTick(() => this.$refs.description.$el.focus());
     }
   }
 };
 </script>
 
 <style scoped>
-.todo-form-input {
-  border: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-.todo-form-input:active,
-.todo-form-input:focus {
-  box-shadow: none;
-  outline: none;
-}
-.description .todo-form-input {
-  font-size: 0.8rem;
-  overflow: hidden;
-  resize: none;
-  color: rgba(0, 0, 0, 0.55);
-}
-.description .todo-form-input::placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
 </style>
 
 

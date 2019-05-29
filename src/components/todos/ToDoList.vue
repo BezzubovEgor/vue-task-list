@@ -3,7 +3,7 @@
     <AppListGroup v-if="todos.length">
       <transition-group name="fade" appear>
         <AppListGroupItem v-for="todo in todos" :key="todo.id">
-          <ToDoItem @toggle="$emit('toggle', todo.id)" v-bind="todo"/>
+          <ToDoListItem @toggle="$emit('toggle', todo.id)" @click="$emit('open', todo.id)" v-bind="todo"/>
         </AppListGroupItem>
       </transition-group>
     </AppListGroup>
@@ -14,7 +14,7 @@
 import AppListGroup from "../core/AppListGroup";
 import AppListGroupItem from "../core/AppListGroupItem";
 import AppBackground from "../core/AppBackground";
-import ToDoItem from "./ToDoItem";
+import ToDoListItem from "./ToDoListItem";
 
 export default {
   name: "ToDoList",
@@ -22,7 +22,7 @@ export default {
     AppListGroup,
     AppListGroupItem,
     AppBackground,
-    ToDoItem
+    ToDoListItem
   },
   props: {
     todos: {
@@ -30,7 +30,7 @@ export default {
       required: true
     }
   },
-  mixins: []
+  mixins: [],
 };
 </script>
 

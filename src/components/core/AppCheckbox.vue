@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span @click="$emit('click', !value)">
     <span class="checkbox" :class="{ checked: this.value }">
       <i class="fas fa-check" />
     </span>
