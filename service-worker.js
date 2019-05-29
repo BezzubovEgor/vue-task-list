@@ -14,13 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/vue-task-list/precache-manifest.21d6e808663f9ec9f750fa0acfc98d7c.js"
+  "/vue-task-list/precache-manifest.8648237aeafee6fd39f2c6fa730b02cb.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-todo"});
-
-workbox.skipWaiting();
-workbox.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -30,7 +27,3 @@ workbox.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerRoute(/^https:\/\/fonts.(?:googleapis|gstatic).com\/(.*)/, workbox.strategies.cacheFirst(), 'GET');
-workbox.routing.registerRoute(/https:\/\/stackpath.bootstrapcdn.com\/bootstrap\/(.*)/, workbox.strategies.cacheFirst(), 'GET');
-workbox.routing.registerRoute(/https:\/\/use.fontawesome.com\/(.*)/, workbox.strategies.cacheFirst(), 'GET');
