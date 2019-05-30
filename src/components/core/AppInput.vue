@@ -14,7 +14,7 @@ import focus from "../../directives/focus";
 export default {
   name: "AppInput",
   props: {
-    value: [ String, Number ],
+    value: [String, Number],
     focus: Boolean
   },
   directives: {
@@ -28,6 +28,7 @@ export default {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
 }
 .app-form-input:active,
 .app-form-input:focus {
