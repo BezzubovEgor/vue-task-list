@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     state: {
         projects: [],
         selectedProject: null,
+        selectedToDo: null,
         storeLoaded: false,
     },
     mutations,
