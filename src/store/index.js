@@ -1,23 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import mutations from './mutations';
-import actions from './actions';
-import getters from './getters';
+import projects from './modules/projects';
+import todos from './modules/todos';
 
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    state: {
-        projects: [],
-        selectedProject: null,
-        selectedToDo: null,
-        storeLoaded: false,
+    modules: {
+        projects,
+        todos,
     },
-    mutations,
-    actions,
-    getters,
 });
 
 export default store;

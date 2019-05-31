@@ -4,6 +4,7 @@
     v-bind="$props"
     :class="`form-control app-form-input ${$props.class || ''}`"
     :value="value"
+    rows="1"
     @input="$emit('input', $event.target.value)"
   ></textarea>
 </template>
@@ -51,7 +52,8 @@ export default {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  box-sizing: content-box;
 }
 .app-form-input::placeholder {
   color: rgba(0, 0, 0, 0.45);

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TheLayout v-if="storeLoaded">
+    <TheLayout v-if="loaded">
       <template #content>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
@@ -38,8 +38,11 @@ export default {
   },
   created() {
     this.$store.dispatch("loadProjects");
+    this.$store.dispatch("loadTodos");
   },
-  computed: mapState(['storeLoaded']),
+  computed: mapState({
+    loaded: state => state.projects.projectsLoaded && state.todos.todosLoaded,
+  }),
 };
 </script>
 

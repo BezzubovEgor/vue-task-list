@@ -4,26 +4,24 @@
       <AppDetailsActions @back="$router.back()" @remove="removeSelectedProject" />
     </template>
     <template #header>{{ project.name }}</template>
-    <ToDoList class="mt-3 todo-list" :todos="project.todos" @toggle="toggleToDo" @open="openToDo"/>
+    <ToDoList class="mt-3 todo-list" :todos="todos" @toggle="toggleToDo" @open="openToDo"/>
     <template #footer>
-      <ToDoFooter/>
+      <ToDoFooter />
     </template>
   </AppPage>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 import AppPage from "../core/layout/AppPage";
 import AppDetailsActions from "../core/layout/AppDetailsActions";
 import ToDoList from "./ToDoList";
 import ToDoFooter from "./ToDoFooter";
 import routes from "../../router/routes";
-import {
-  SELECT_PROJECT,
-  TOGGLE_TODO,
-  REMOVE_PROJECT
-} from "../../store/mutationTypes";
+import { TOGGLE_TODO } from '../../store/modules/todos/mutationTypes';
+import { REMOVE_PROJECT } from '../../store/modules/projects/mutationTypes';
+
 
 export default {
   name: "ToDoPage",
@@ -37,18 +35,22 @@ export default {
     projectId: String
   },
   created() {
-    this.selectProject();
+    this.checkProject();
   },
   watch: {
-    projectId: "selectProject"
+    projectId: "checkProject"
   },
   computed: {
-    ...mapGetters(["project"])
+    project() {
+      return this.$store.getters.getProjectById(this.projectId);
+    },
+    todos() {
+      return this.$store.getters.getProjectTodos(this.projectId);
+    },
   },
   methods: {
     ...mapActions([TOGGLE_TODO, REMOVE_PROJECT]),
-    selectProject() {
-      this.$store.commit(SELECT_PROJECT, this.projectId);
+    checkProject() {
       if (!this.project) {
         this.$router.replace(routes.NOT_FOUND.path);
       }

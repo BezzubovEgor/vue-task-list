@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
 
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const DB_NAME = 'vue-task-list';
 
 async function getDb() {
@@ -11,6 +11,9 @@ async function getDb() {
         upgrade(db) {
             if (!db.objectStoreNames.contains('projects')) {
                 db.createObjectStore('projects');
+            }
+            if (!db.objectStoreNames.contains('todos')) {
+                db.createObjectStore('todos');
             }
         }
     });

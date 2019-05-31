@@ -13,12 +13,14 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 
 import AppModal from "../core/AppModal";
 import AppButton from "../core/AppButton";
 import ToDoForm from "./ToDoForm";
-import { ADD_TODO } from "../../store/mutationTypes";
+
+import { ADD_TODO } from '../../store/modules/todos/mutationTypes';
+
 
 export default {
   components: {
@@ -34,10 +36,11 @@ export default {
   methods: {
     ...mapActions([ADD_TODO]),
     add(todo) {
+      const { projectId } = this.$router.currentRoute.params;
       this.$data.isFormOpen = false;
-      this.addToDo(todo);
+      this[ADD_TODO]({ ...todo, projectId });
     }
-  }
+  },
 };
 </script>
 

@@ -24,13 +24,9 @@ import AppDetailsActions from "../core/layout/AppDetailsActions";
 import AppBackground from "../core/AppBackground";
 import AppSelector from "../core/AppSelector";
 import ToDoDetailsForm from "./ToDoDetailsForm";
-import {
-  SELECT_PROJECT,
-  SELECT_TODO,
-  REMOVE_TODO,
-  MOVE_TODO
-} from "../../store/mutationTypes";
 import routes from "../../router/routes";
+import { REMOVE_TODO, MOVE_TODO } from '../../store/modules/todos/mutationTypes';
+
 
 export default {
   name: "ToDoDetails",
@@ -46,21 +42,21 @@ export default {
     todoId: String
   },
   created() {
-    this.select();
+    this.check();
   },
   watch: {
-    todoId: "select",
-    projectId: "select"
+    todoId: "check",
+    projectId: "check"
   },
   computed: {
-    ...mapGetters(["todo", "project", "projects"])
+    ...mapGetters(["projects"]),
+    todo() {
+        return this.$store.getters.getProjectTodoById(this.todoId, this.projectId);
+    },
   },
   methods: {
     ...mapActions([REMOVE_TODO, MOVE_TODO]),
-    select() {
-      this.$store.commit(SELECT_PROJECT, this.projectId);
-      this.$store.commit(SELECT_TODO, this.todoId);
-
+    check() {
       if (!this.todo) {
         this.$router.replace(routes.NOT_FOUND.path);
       }
@@ -71,8 +67,7 @@ export default {
     },
     move(projectId) {
       this[MOVE_TODO]({
-        to: projectId,
-        from: this.projectId,
+        projectId,
         todoId: this.todoId
       });
       this.$router.replace({

@@ -8,7 +8,7 @@
         v-model="title" />
     </div>
     <FadeUp>
-      <div class="form-group description" v-show="showDescription">
+      <div class="form-group description" v-if="showDescription">
         <AppTextarea
           :maxHeight="250"
           ref="description"

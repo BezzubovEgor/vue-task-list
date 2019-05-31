@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <AppInput
+  <div class="todo-details-form">
+    <AppTextarea
       focus
       required
       ref="title"
@@ -20,13 +20,11 @@
 </template>
 
 <script>
-import AppInput from "../core/AppInput";
 import AppTextarea from "../core/AppTextarea";
 
 export default {
   name: "ToDoDetailsForm",
   components: {
-    AppInput,
     AppTextarea
   },
   props: {
@@ -39,9 +37,13 @@ export default {
 </script>
 
 <style scoped>
+.todo-details-form {
+    background: rgba(255, 255, 255, 0.7);
+}
 .todo-title {
   font-size: 1.7rem;
   font-weight: 500;
+  color: #2c3e50;
 }
 .todo-description {
   color: #495057;

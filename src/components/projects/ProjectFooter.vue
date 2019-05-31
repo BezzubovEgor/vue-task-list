@@ -18,7 +18,8 @@ import { mapActions } from "vuex";
 import AppModal from "../core/AppModal";
 import AppButton from "../core/AppButton";
 import ProjectForm from "./ProjectForm";
-import { ADD_PROJECT } from '../../store/mutationTypes';
+import { ADD_PROJECT } from '../../store/modules/projects/mutationTypes';
+
 
 export default {
   components: {
