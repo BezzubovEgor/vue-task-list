@@ -19,8 +19,7 @@ import AppDetailsActions from "../core/layout/AppDetailsActions";
 import ToDoList from "./ToDoList";
 import ToDoFooter from "./ToDoFooter";
 import routes from "../../router/routes";
-import { TOGGLE_TODO } from '../../store/modules/todos/mutationTypes';
-import { REMOVE_PROJECT } from '../../store/modules/projects/mutationTypes';
+import { REMOVE_PROJECT, TOGGLE_TODO } from '../../store/types';
 
 
 export default {
@@ -49,7 +48,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions([TOGGLE_TODO, REMOVE_PROJECT]),
+    ...mapActions({
+      toggleToDo: TOGGLE_TODO,
+      removeToDo: REMOVE_PROJECT,
+    }),
     checkProject() {
       if (!this.project) {
         this.$router.replace(routes.NOT_FOUND.path);
@@ -57,7 +59,7 @@ export default {
     },
     removeSelectedProject() {
       this.$router.back();
-      this[REMOVE_PROJECT](this.projectId);
+      this.removeToDo(this.projectId);
     },
     openToDo(todoId) {
       this.$router.push({ name: routes.TODO_DETAILS.name, params: { projectId: this.projectId, todoId } });

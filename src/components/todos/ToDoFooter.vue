@@ -19,7 +19,7 @@ import AppModal from "../core/AppModal";
 import AppButton from "../core/AppButton";
 import ToDoForm from "./ToDoForm";
 
-import { ADD_TODO } from '../../store/modules/todos/mutationTypes';
+import { ADD_TODO } from '../../store/types';
 
 
 export default {

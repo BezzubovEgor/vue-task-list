@@ -1,17 +1,10 @@
 <template>
-  <AppPage v-if="todo">
+  <AppPage v-if="todoForm">
     <template #actions>
       <AppDetailsActions @back="$router.back()" @remove="remove"/>
     </template>
     <AppBackground :src="require('../../assets/todoDetails.svg')">
-      <AppSelector
-        :value="this.projectId"
-        :options="this.projects"
-        :valueKey="'id'"
-        :labelKey="'name'"
-        @change="move"
-      />
-      <ToDoDetailsForm :todo="todo"/>
+      <ToDoDetailsForm/>
     </AppBackground>
   </AppPage>
 </template>
@@ -22,11 +15,9 @@ import { mapGetters, mapActions } from "vuex";
 import AppPage from "../core/layout/AppPage";
 import AppDetailsActions from "../core/layout/AppDetailsActions";
 import AppBackground from "../core/AppBackground";
-import AppSelector from "../core/AppSelector";
 import ToDoDetailsForm from "./ToDoDetailsForm";
 import routes from "../../router/routes";
-import { REMOVE_TODO, MOVE_TODO } from '../../store/modules/todos/mutationTypes';
-
+import { REMOVE_TODO, SET_TODO_FORM } from "../../store/types";
 
 export default {
   name: "ToDoDetails",
@@ -34,7 +25,6 @@ export default {
     AppPage,
     AppDetailsActions,
     AppBackground,
-    AppSelector,
     ToDoDetailsForm
   },
   props: {
@@ -49,31 +39,20 @@ export default {
     projectId: "check"
   },
   computed: {
-    ...mapGetters(["projects"]),
-    todo() {
-        return this.$store.getters.getProjectTodoById(this.todoId, this.projectId);
-    },
+    ...mapGetters(["todoForm"]),
   },
   methods: {
-    ...mapActions([REMOVE_TODO, MOVE_TODO]),
+    ...mapActions([REMOVE_TODO, SET_TODO_FORM]),
     check() {
-      if (!this.todo) {
-        this.$router.replace(routes.NOT_FOUND.path);
+      this[SET_TODO_FORM](this.todoId);
+
+      if (!this.todoForm) {
+        return this.$router.replace(routes.NOT_FOUND.path);
       }
     },
     remove() {
       this.$router.back();
       this[REMOVE_TODO](this.todoId);
-    },
-    move(projectId) {
-      this[MOVE_TODO]({
-        projectId,
-        todoId: this.todoId
-      });
-      this.$router.replace({
-        name: routes.TODO_DETAILS.name,
-        params: { projectId, todoId: this.todoId }
-      });
     }
   }
 };

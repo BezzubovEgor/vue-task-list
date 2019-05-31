@@ -76,7 +76,7 @@ export default {
     },
     select(value) {
         this.isOpen = false;
-        this.$emit('change', value);
+        this.$emit('input', value);
     }
   }
 };

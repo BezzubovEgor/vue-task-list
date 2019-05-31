@@ -21,7 +21,8 @@ import TheFooter from "./components/core/layout/TheFooter";
 import store from "./store";
 import router from "./router";
 import mainMenu from "./menus/main";
-import { mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import { LOAD_PROJECTS, LOAD_TODOS } from './store/types';
 
 export default {
   name: "App",
@@ -37,12 +38,13 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("loadProjects");
-    this.$store.dispatch("loadTodos");
+    this[LOAD_PROJECTS]();
+    this[LOAD_TODOS]();
   },
-  computed: mapState({
-    loaded: state => state.projects.projectsLoaded && state.todos.todosLoaded,
-  }),
+  methods: {
+    ...mapActions([LOAD_PROJECTS, LOAD_TODOS]),
+  },
+  computed: mapGetters(['loaded']),
 };
 </script>
 
