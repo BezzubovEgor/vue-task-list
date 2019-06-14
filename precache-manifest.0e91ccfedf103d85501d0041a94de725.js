@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "8536c2ac9e5312378f70",
-    "url": "/vue-task-list/css/app.18526479.css"
+    "revision": "4892cd11a1754cbce4f2",
+    "url": "/vue-task-list/css/app.4109e5d2.css"
   },
   {
-    "revision": "8536c2ac9e5312378f70",
-    "url": "/vue-task-list/js/app.a9dc6562.js"
+    "revision": "4892cd11a1754cbce4f2",
+    "url": "/vue-task-list/js/app.98c1e427.js"
   },
   {
     "revision": "45b74280ef0f6c3d2b0a",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/vue-task-list/img/todo.75cfc88e.svg"
   },
   {
-    "revision": "2aa86d1ee245d0e515824ad836db88ed",
+    "revision": "35991dde2c39a9deab8f902e9e3ccd6f",
     "url": "/vue-task-list/index.html"
   },
   {
