@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="{ interactive }" :tabindex="interactive && 0" @click="onClick" @keypress.enter="onEnter">
+  <div class="card" :class="{ interactive }" :tabindex="interactive && 0" v-longpress @longpress-end="mark" @longpress-click="onClick" @keypress.enter="onEnter" onselectstart="return false;" >
     <div class="card-body">
       <h5 class="card-title" v-if="$slots.header">
         <slot name="header"/>
@@ -10,9 +10,14 @@
 </template>
 
 <script>
+import longpress from '../../directives/longPress';
+
 export default {
     props: {
         interactive: Boolean,
+    },
+    directives: {
+      longpress,
     },
     methods: {
         onClick() {
@@ -21,6 +26,10 @@ export default {
         },
         onEnter() {
             this.$emit('select');
+        },
+        mark() {
+          this.$el.blur();
+          this.$emit('mark');
         }
     }
 };
@@ -44,8 +53,6 @@ export default {
 .interactive {
     cursor: pointer;
 }
-.interactive:hover,
-.interactive:active,
 .interactive:focus {
     box-shadow: 0 1px 3px rgba(30, 30, 30, 0.2);
 }

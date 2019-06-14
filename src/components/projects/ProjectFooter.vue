@@ -1,10 +1,6 @@
 <template>
-  <div class="project-footer d-flex justify-content-center">
-    <div class="add-button d-flex justify-content-center">
-      <AppButton mode="primary" @click="isFormOpen = true">
-        <span class="plus pr-3">+</span> New project
-      </AppButton>
-    </div>
+  <div>
+    <AppAddButton  @click="isFormOpen = true"/>
 
     <AppModal :isOpen="isFormOpen" :footer="false" @close="isFormOpen = false">
       <ProjectForm @add="add"/>
@@ -16,14 +12,14 @@
 import { mapActions } from "vuex";
 
 import AppModal from "../core/AppModal";
-import AppButton from "../core/AppButton";
+import AppAddButton from "../core/AppAddButton";
 import ProjectForm from "./ProjectForm";
 import { ADD_PROJECT } from '../../store/types';
 
 
 export default {
   components: {
-    AppButton,
+    AppAddButton,
     AppModal,
     ProjectForm,
   },
@@ -43,24 +39,4 @@ export default {
 </script>
 
 <style scoped>
-.project-footer {
-  width: 100%;
-  position: fixed;
-  z-index: 10000;
-}
-.plus {
-  font-size: 1.9rem;
-  line-height: 1rem;
-}
-.add-button {
-  position: absolute;
-  transform: translateY(-50%);
-  width: 100%;
-}
-.additional-controls {
-  padding: 0.8rem;
-}
-.additional-controls .fas {
-  font-size: 1.2rem;
-}
 </style>

@@ -1,10 +1,6 @@
 <template>
-  <div class="todo-footer d-flex justify-content-center">
-    <div class="add-button d-flex justify-content-center">
-      <AppButton mode="primary" @click="isFormOpen = true">
-        <span class="plus pr-3">+</span> New task
-      </AppButton>
-    </div>
+  <div>
+    <AppAddButton @click="isFormOpen = true" />
 
     <AppModal :isOpen="isFormOpen" :footer="false" @close="isFormOpen = false">
       <ToDoForm @add="add"/>
@@ -16,7 +12,7 @@
 import { mapActions } from 'vuex';
 
 import AppModal from "../core/AppModal";
-import AppButton from "../core/AppButton";
+import AppAddButton from "../core/AppAddButton";
 import ToDoForm from "./ToDoForm";
 
 import { ADD_TODO } from '../../store/types';
@@ -25,7 +21,7 @@ import { ADD_TODO } from '../../store/types';
 export default {
   components: {
     ToDoForm,
-    AppButton,
+    AppAddButton,
     AppModal
   },
   data() {
@@ -45,24 +41,4 @@ export default {
 </script>
 
 <style scoped>
-.todo-footer {
-  width: 100%;
-  position: fixed;
-  z-index: 10000;
-}
-.plus {
-  font-size: 1.9rem;
-  line-height: 1rem;
-}
-.add-button {
-  position: absolute;
-  transform: translateY(-50%);
-  width: 100%;
-}
-.additional-controls {
-  padding: 0.8rem;
-}
-.additional-controls .fas {
-  font-size: 1.2rem;
-}
 </style>

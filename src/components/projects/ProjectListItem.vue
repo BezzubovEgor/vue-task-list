@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppCard interactive @select="$emit('select')" class="m-1">
+    <AppCard interactive @select="$emit('select')" @mark="$emit('mark')" class="m-1" :class="{ marked }">
       <template #header>{{ name }}</template>
       <div>
         To Do:
@@ -24,10 +24,16 @@ export default {
   props: {
     name: String,
     todo: Number,
-    done: Number
-  }
+    done: Number,
+    marked: Boolean,
+  },
 };
 </script>
 
-<style>
+<style scoped>
+.marked {
+  background: rgba(81, 75, 192, .9);
+  color: white;
+  border-color: rgba(81, 75, 192, .9);
+}
 </style>

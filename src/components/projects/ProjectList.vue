@@ -6,6 +6,7 @@
         v-for="project in projects"
         v-bind="project"
         @select="select(project.id)"
+        @mark="toggleMark(project.id)"
         :key="project.id"
       />
     </transition-group>
@@ -13,24 +14,30 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import AppBackground from "../core/AppBackground";
 import ProjectListItem from "./ProjectListItem";
 import routes from "../../router/routes";
+import { TOGGLE_MARK_PROJECT } from '../../store/types';
 
 export default {
   components: {
     AppBackground,
-    ProjectListItem
+    ProjectListItem,
   },
   methods: {
+    ...mapActions({ toggleMark: TOGGLE_MARK_PROJECT }),
     select(projectId) {
-      this.$router.push({ name: routes.PROJECT.name, params: { projectId } });
-    }
+      if (this.isBulkMode) {
+        this.toggleMark(projectId);
+      } else {
+        this.$router.push({ name: routes.PROJECT.name, params: { projectId } });
+      }
+    },
   },
   computed: {
-    ...mapGetters(["projects"])
+    ...mapGetters(["projects", "isBulkMode"])
   }
 };
 </script>
