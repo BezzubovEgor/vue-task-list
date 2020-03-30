@@ -1,13 +1,13 @@
 // Project types
-export const SET_PROJECTS = "SET_PROJECTS";
-export const REMOVE_PROJECT = "REMOVE_PROJECT";
-export const ADD_PROJECT = "ADD_PROJECT";
-export const LOAD_PROJECTS = "LOAD_PROJECTS";
-export const SAVE_PROJECTS = "SAVE_PROJECTS";
-export const TOGGLE_MARK_PROJECT = "TOGGLE_MARK_PROJECT";
-export const REMOVE_MARKED_PROJECTS = "REMOVE_MARKED_PROJECTS";
-export const MARK_ALL_PROJECTS = "MARK_ALL_PROJECTS";
-export const UNMARK_ALL_PROJECTS = "UNMARK_ALL_PROJECTS";
+export const SET_LISTS = "SET_LISTS";
+export const REMOVE_LIST = "REMOVE_LIST";
+export const ADD_LIST = "ADD_LIST";
+export const LOAD_LISTS = "LOAD_LISTS";
+export const SAVE_LISTS = "SAVE_LISTS";
+export const TOGGLE_MARK_LIST = "TOGGLE_MARK_LIST";
+export const REMOVE_MARKED_LISTS = "REMOVE_MARKED_LISTS";
+export const MARK_ALL_LISTS = "MARK_ALL_LISTS";
+export const UNMARK_ALL_LISTS = "UNMARK_ALL_LISTS";
 
 // Todos types
 export const ADD_TODO = "ADD_TODO";

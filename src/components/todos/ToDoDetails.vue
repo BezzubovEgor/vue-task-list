@@ -12,12 +12,12 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+import { REMOVE_TODO, SET_TODO_FORM } from "../../store/types";
+import routes from "../../router/routes";
 import AppPage from "../core/layout/AppPage";
 import AppDetailsActions from "../core/layout/AppDetailsActions";
 import AppBackground from "../core/AppBackground";
 import ToDoDetailsForm from "./ToDoDetailsForm";
-import routes from "../../router/routes";
-import { REMOVE_TODO, SET_TODO_FORM } from "../../store/types";
 
 export default {
   name: "ToDoDetails",
@@ -28,7 +28,7 @@ export default {
     ToDoDetailsForm
   },
   props: {
-    projectId: String,
+    listId: String,
     todoId: String
   },
   created() {
@@ -36,7 +36,7 @@ export default {
   },
   watch: {
     todoId: "check",
-    projectId: "check"
+    listId: "check"
   },
   computed: {
     ...mapGetters(["todoForm"]),

@@ -3,7 +3,7 @@
     <AppAddButton  @click="isFormOpen = true"/>
 
     <AppModal :isOpen="isFormOpen" :footer="false" @close="isFormOpen = false">
-      <ProjectForm @add="add"/>
+      <ListForm @add="add"/>
     </AppModal>
   </div>
 </template>
@@ -11,17 +11,17 @@
 <script>
 import { mapActions } from "vuex";
 
+import { ADD_LIST } from '../../store/types';
 import AppModal from "../core/AppModal";
 import AppAddButton from "../core/AppAddButton";
-import ProjectForm from "./ProjectForm";
-import { ADD_PROJECT } from '../../store/types';
+import ListForm from "./ListForm";
 
 
 export default {
   components: {
     AppAddButton,
     AppModal,
-    ProjectForm,
+    ListForm,
   },
   data() {
     return {
@@ -29,10 +29,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions([ADD_PROJECT]),
-    add(project) {
+    ...mapActions([ADD_LIST]),
+    add(list) {
       this.$data.isFormOpen = false;
-      this[ADD_PROJECT](project);
+      this[ADD_LIST](list);
     }
   }
 };

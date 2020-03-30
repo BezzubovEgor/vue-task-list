@@ -1,9 +1,9 @@
 <template>
-  <form class="project-form" @submit.prevent="submit">
+  <form class="list-form" @submit.prevent="submit">
     <div class="form-group mb-0">
       <input
-        class="form-control project-form-input"
-        placeholder="What project are you want to create?"
+        class="form-control list-form-input"
+        placeholder="What list do you want to create?"
         required
         v-model="name"
         v-focus
@@ -22,7 +22,7 @@ import AppButton from "../core/AppButton";
 export default {
   components: { AppButton },
   props: {
-    project: Object
+    list: Object
   },
   data() {
     return {
@@ -45,13 +45,13 @@ export default {
 </script>
 
 <style scoped>
-.project-form-input {
+.list-form-input {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
 }
-.project-form-input:active,
-.project-form-input:focus {
+.list-form-input:active,
+.list-form-input:focus {
   box-shadow: none;
   outline: none;
 }

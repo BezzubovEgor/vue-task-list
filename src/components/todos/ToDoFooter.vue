@@ -11,11 +11,10 @@
 <script>
 import { mapActions } from 'vuex';
 
+import { ADD_TODO } from '../../store/types';
 import AppModal from "../core/AppModal";
 import AppAddButton from "../core/AppAddButton";
 import ToDoForm from "./ToDoForm";
-
-import { ADD_TODO } from '../../store/types';
 
 
 export default {
@@ -32,9 +31,9 @@ export default {
   methods: {
     ...mapActions([ADD_TODO]),
     add(todo) {
-      const { projectId } = this.$router.currentRoute.params;
+      const { listId } = this.$router.currentRoute.params;
       this.$data.isFormOpen = false;
-      this[ADD_TODO]({ ...todo, projectId });
+      this[ADD_TODO]({ ...todo, listId });
     }
   },
 };

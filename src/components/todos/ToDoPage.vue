@@ -1,9 +1,9 @@
 <template>
-  <AppPage v-if="project">
+  <AppPage v-if="list">
     <template #actions>
-      <AppDetailsActions @back="$router.back()" @remove="removeSelectedProject" />
+      <AppDetailsActions @back="$router.back()" @remove="removeSelectedList" />
     </template>
-    <template #header>{{ project.name }}</template>
+    <template #header>{{ list.name }}</template>
     <ToDoList class="mt-3 todo-list" :todos="todos" @toggle="toggleToDo" @open="openToDo"/>
     <template #footer>
       <ToDoFooter />
@@ -14,12 +14,12 @@
 <script>
 import { mapActions } from "vuex";
 
-import AppPage from "../core/layout/AppPage";
+import { REMOVE_LIST, TOGGLE_TODO } from '../../store/types';
+import routes from "../../router/routes";
 import AppDetailsActions from "../core/layout/AppDetailsActions";
+import AppPage from "../core/layout/AppPage";
 import ToDoList from "./ToDoList";
 import ToDoFooter from "./ToDoFooter";
-import routes from "../../router/routes";
-import { REMOVE_PROJECT, TOGGLE_TODO } from '../../store/types';
 
 
 export default {
@@ -31,38 +31,38 @@ export default {
     ToDoFooter
   },
   props: {
-    projectId: String
+    listId: String
   },
   created() {
-    this.checkProject();
+    this.checkList();
   },
   watch: {
-    projectId: "checkProject"
+    listId: "checkList"
   },
   computed: {
-    project() {
-      return this.$store.getters.getProjectById(this.projectId);
+    list() {
+      return this.$store.getters.getListById(this.listId);
     },
     todos() {
-      return this.$store.getters.getProjectTodos(this.projectId);
+      return this.$store.getters.getListTodos(this.listId);
     },
   },
   methods: {
     ...mapActions({
       toggleToDo: TOGGLE_TODO,
-      removeToDo: REMOVE_PROJECT,
+      removeToDo: REMOVE_LIST,
     }),
-    checkProject() {
-      if (!this.project) {
+    checkList() {
+      if (!this.list) {
         this.$router.replace(routes.NOT_FOUND.path);
       }
     },
-    removeSelectedProject() {
+    removeSelectedList() {
       this.$router.back();
-      this.removeToDo(this.projectId);
+      this.removeToDo(this.listId);
     },
     openToDo(todoId) {
-      this.$router.push({ name: routes.TODO_DETAILS.name, params: { projectId: this.projectId, todoId } });
+      this.$router.push({ name: routes.TODO_DETAILS.name, params: { listId: this.listId, todoId } });
     },
   }
 };

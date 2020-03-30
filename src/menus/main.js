@@ -1,7 +1,7 @@
 import routes from '../router/routes';
 
 const menu = [{
-    title: 'Project list',
+    title: 'Lists',
     icon: 'fas fa-list',
     to: routes.MAIN.path,
 }, {

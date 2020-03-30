@@ -1,16 +1,16 @@
 import { openDB } from 'idb';
 
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 const DB_NAME = 'vue-task-list';
 
 async function getDb() {
     if (!('indexedDB' in window)) {
-        throw new Error('YOur brouser does not supports indexedDB');
+        throw new Error('Your brouser does not supports indexedDB');
     }
     return openDB(DB_NAME, DB_VERSION, {
         upgrade(db) {
-            if (!db.objectStoreNames.contains('projects')) {
-                db.createObjectStore('projects');
+            if (!db.objectStoreNames.contains('lists')) {
+                db.createObjectStore('lists');
             }
             if (!db.objectStoreNames.contains('todos')) {
                 db.createObjectStore('todos');

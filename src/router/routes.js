@@ -1,4 +1,4 @@
-import ProjectsPage from "../components/projects/ProjectsPage";
+import ListsPage from "../components/lists/ListsPage";
 import ToDoPage from "../components/todos/ToDoPage";
 import ToDoDetails from "../components/todos/ToDoDetails.vue";
 import AboutPage from "../components/about/AboutPage";
@@ -6,10 +6,10 @@ import NotFoundPage from "../components/core/errors/NotFoundPage";
 
 
 const ROUTES = {
-    MAIN: { name: "main", path: "/", redirect: "/projects", props: true },
-    PROJECTS: { name: "projects", path: "/projects", component: ProjectsPage, props: true },
-    PROJECT: { name: "project-details", path: "/projects/:projectId/todos", component: ToDoPage, props: true },
-    TODO_DETAILS: { name: "todo-details", path: "/project/:projectId/todos/:todoId", component: ToDoDetails, props: true },
+    MAIN: { name: "main", path: "/", redirect: "/lists", props: true },
+    LISTS: { name: "lists", path: "/lists", component: ListsPage, props: true },
+    LIST: { name: "list-details", path: "/lists/:listId/todos", component: ToDoPage, props: true },
+    TODO_DETAILS: { name: "todo-details", path: "/list/:listId/todos/:todoId", component: ToDoDetails, props: true },
     ABOUT: { name: "about", path: "/about", component: AboutPage, props: true },
     NOT_FOUND: { name: "not-found", path: "/not-found", component: NotFoundPage, props: true },
 }

@@ -15,14 +15,15 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 import TheLayout from "./components/core/layout/TheLayout";
 import TheFooter from "./components/core/layout/TheFooter";
 
 import store from "./store";
 import router from "./router";
 import mainMenu from "./menus/main";
-import { mapActions, mapGetters } from 'vuex';
-import { LOAD_PROJECTS, LOAD_TODOS } from './store/types';
+import { LOAD_LISTS, LOAD_TODOS } from './store/types';
 
 export default {
   name: "App",
@@ -38,11 +39,11 @@ export default {
     };
   },
   created() {
-    this[LOAD_PROJECTS]();
+    this[LOAD_LISTS]();
     this[LOAD_TODOS]();
   },
   methods: {
-    ...mapActions([LOAD_PROJECTS, LOAD_TODOS]),
+    ...mapActions([LOAD_LISTS, LOAD_TODOS]),
   },
   computed: mapGetters(['loaded']),
 };

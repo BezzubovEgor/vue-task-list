@@ -1,6 +1,6 @@
 <template>
   <div class="todo-details-form">
-    <AppSelector v-model="projectId" :options="projects" :valueKey="'id'" :labelKey="'name'"/>
+    <AppSelector v-model="listId" :options="lists" :valueKey="'id'" :labelKey="'name'"/>
     <AppTextarea
       focus
       required
@@ -20,10 +20,10 @@
 import { mapGetters, mapActions } from "vuex";
 import { mapFields } from "vuex-map-fields";
 
-import AppTextarea from "../core/AppTextarea";
-import AppSelector from "../core/AppSelector";
 import { SAVE_TODO_FORM } from "../../store/types";
 import routes from "../../router/routes";
+import AppTextarea from "../core/AppTextarea";
+import AppSelector from "../core/AppSelector";
 
 export default {
   name: "ToDoDetailsForm",
@@ -35,23 +35,23 @@ export default {
     todo: Object
   },
   computed: {
-    ...mapGetters(["projects"]),
+    ...mapGetters(["lists"]),
     ...mapFields([
       "todos.todoForm.id",
       "todos.todoForm.title",
       "todos.todoForm.description",
-      "todos.todoForm.projectId"
+      "todos.todoForm.listId"
     ])
   },
   watch: {
-    projectId: "changeUrl"
+    listId: "changeUrl"
   },
   methods: {
     ...mapActions([SAVE_TODO_FORM]),
     changeUrl() {
       this.$router.replace({
         name: routes.TODO_DETAILS.name,
-        params: { projectId: this.projectId, todoId: this.id }
+        params: { listId: this.listId, todoId: this.id }
       });
     }
   },

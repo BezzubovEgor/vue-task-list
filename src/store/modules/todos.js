@@ -11,10 +11,10 @@ const state = {
 };
 
 const getters = {
-    getProjectTodoById: store => (todoId, project) => {
-        return store.todos.find(({ id, projectId }) => id === todoId && projectId === project);
+    getListTodoById: store => (todoId, list) => {
+        return store.todos.find(({ id, listId }) => id === todoId && listId === list);
     },
-    getProjectTodos: store => project => store.todos.filter(({ projectId }) => projectId === project),
+    getListTodos: store => list => store.todos.filter(({ listId }) => listId === list),
     todoForm: store => store.todoForm,
 };
 
@@ -38,9 +38,9 @@ const mutations = {
     [REMOVE_TODO](state, todoId) {
         state.todos = state.todos.filter(({ id }) => id !== todoId);
     },
-    [MOVE_TODO](state, { projectId, todoId }) {
+    [MOVE_TODO](state, { listId, todoId }) {
         const todo = state.todos.find(({ id }) => id === todoId);
-        todo.projectId = projectId;
+        todo.listId = listId;
     },
     [SET_TODO_FORM](state, todoId) {
         state.todoForm = state.todos.find(({ id }) => id === todoId);

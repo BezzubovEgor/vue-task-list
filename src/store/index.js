@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { getField, updateField } from 'vuex-map-fields';
 
-import projects from './modules/projects';
+import lists from './modules/lists';
 import todos from './modules/todos';
 
 
@@ -11,7 +11,7 @@ Vue.use(Vuex);
 const state = {};
 
 const getters = {
-    loaded: state => state.projects.projectsLoaded && state.todos.todosLoaded,
+    loaded: state => state.lists.listsLoaded && state.todos.todosLoaded,
     getField,
 };
 
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
     mutations,
     actions,
     modules: {
-        projects,
+        lists,
         todos,
     },
 });
